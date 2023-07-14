@@ -4,7 +4,7 @@ Dockerfile of Android Build Tools & NDK. Use only for build.
 
 ## Versions
 
-- Build Tools: 33.0.2
+- Build Tools: 33.0.2, 30.0.3
 - NDK: 22.1.7171670
 
 ## Build
@@ -59,4 +59,16 @@ $ docker run -v ${PWD}/openssl_for_ios_and_android:/openssl --rm -it android-dev
 # sh build-android-openssl-all.sh 2>&1 | tee build.log
 # ls -al ../output/android
 # exit
+```
+
+### React Native App v0.72.3
+
+Build at Jul 14, 2023.
+
+```console
+$ docker run -v ${PWD}:/work --rm -it android-dev /bin/bash
+# cd /work
+# npx react-native@0.72.3 init AwesomeProject
+# cd AwesomeProject/android
+# ./gradlew assemble
 ```
