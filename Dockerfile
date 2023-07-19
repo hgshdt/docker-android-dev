@@ -41,4 +41,6 @@ RUN    yes | ${SDK_MGR} --licenses > /dev/null \
     && yes | ${SDK_MGR} "cmake;${CMAKE}" \
     && yes | ${SDK_MGR} "ndk;${NDK}"
 
+# platform-tools, platforms>android-33, tools
+
 #    && yes | ${SDK_MGR} "build-tools;${BUILD_TOOLS}" \
