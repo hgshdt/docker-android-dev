@@ -6,10 +6,10 @@ LABEL version="1.0"
 ARG COMMANDLINE_TOOLS="9477386" \
     BUILD_TOOLS="33.0.2" \
     BUILD_TOOLS2="30.0.3" \
+    ANDROID_PLATFORM="33" \
     CMAKE="3.22.1" \
     NDK="22.1.7171670"
-
-#   NDK="23.1.7779620" => M1
+#   NDK="23.1.7779620" => M1 Mac
 
 WORKDIR /work
 
@@ -37,10 +37,9 @@ ARG SDK_MGR="${ANDROID_SDK_ROOT}/cmdline-tools/bin/sdkmanager --sdk_root=${ANDRO
 
 RUN    yes | ${SDK_MGR} --licenses > /dev/null \ 
     && yes | ${SDK_MGR} --update \
+    && yes | ${SDK_MGR} "tools" \
+    && yes | ${SDK_MGR} "platform-tools" \
     && yes | ${SDK_MGR} "build-tools;${BUILD_TOOLS}" "build-tools;${BUILD_TOOLS2}" \
+    && yes | ${SDK_MGR} "platforms;android-${ANDROID_PLATFORM}" \
     && yes | ${SDK_MGR} "cmake;${CMAKE}" \
     && yes | ${SDK_MGR} "ndk;${NDK}"
-
-# platform-tools, platforms>android-33, tools
-
-#    && yes | ${SDK_MGR} "build-tools;${BUILD_TOOLS}" \
